@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Reviewer;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,18 +32,18 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function NewRequest()
+    public function approve()
     {
         //
         $rows = Article::where('review_status', '2')->orderBy('updated_at', 'desc')->get();
         $categories = ArticleCategory::where('status', '1')->get();
 
-        $title = 'New Request';
+        $title = 'Approve Article';
         $url = $this->url;
 
-        $route_name = 'NewRequest';
+        $route_name = 'approve';
 
-        return view('reviewer.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
+        return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
     }
 
     /**
@@ -51,18 +51,18 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function WorkInProgress()
+    public function pending()
     {
         //
         $rows = Article::where('review_status', '1')->orderBy('updated_at', 'desc')->get();
         $categories = ArticleCategory::where('status', '1')->get();
 
-        $title = 'Work In Progress';
+        $title = 'Pending Article';
         $url = $this->url;
 
-        $route_name = 'WorkInProgress';
+        $route_name = 'pending';
 
-        return view('reviewer.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
+        return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
     }
 
     /**
@@ -70,33 +70,18 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function PendingAcceptance()
+    public function reject()
     {
         //
         $rows = Article::where('review_status', '0')->orderBy('updated_at', 'desc')->get();
         $categories = ArticleCategory::where('status', '1')->get();
 
-        $title = 'Pending Acceptance';
+        $title = 'Reject Article';
         $url = $this->url;
 
-        $route_name = 'PendingAcceptance';
+        $route_name = 'reject';
 
-        return view('reviewer.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
-    }
-
-    //closed function
-    public function Closed()
-    {
-        //
-        $rows = Article::where('review_status', '0')->orderBy('updated_at', 'desc')->get();
-        $categories = ArticleCategory::where('status', '1')->get();
-
-        $title = 'Closed';
-        $url = $this->url;
-
-        $route_name = 'Closed';
-
-        return view('reviewer.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
+        return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
     }
 
     /**
@@ -194,7 +179,7 @@ class ArticleController extends Controller
 
         Session::flash('success', $this->title.' Created Successfully!');
 
-        return redirect()->route('reviewer.article.approve');
+        return redirect()->route('article.approve');
     }
 
     /**

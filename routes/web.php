@@ -57,9 +57,10 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']
 {
     // Article Routes
     Route::resource('article-category', 'Admin\ArticleCategoryController');
-    Route::get('article/approve', 'Admin\ArticleController@approve')->name('article.approve');
-    Route::get('article/pending', 'Admin\ArticleController@pending')->name('article.pending');
-    Route::get('article/reject', 'Admin\ArticleController@reject')->name('article.reject');
+    Route::get('article/NewRequest', 'Admin\ArticleController@NewRequest')->name('article.NewRequest');
+    Route::get('article/WorkInProgress', 'Admin\ArticleController@WorkInProgress')->name('article.WorkInProgress');
+    Route::get('article/PendingAcceptance', 'Admin\ArticleController@PendingAcceptance')->name('article.PendingAcceptance');
+    Route::get('article/Closed', 'Admin\ArticleController@Closed')->name('article.Closed');
     Route::post('article', 'Admin\ArticleController@store')->name('article.store');
     Route::put('article/{id}', 'Admin\ArticleController@update')->name('article.update');
     Route::delete('article/{id}', 'Admin\ArticleController@destroy')->name('article.destroy');
@@ -88,14 +89,51 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']
     Route::post('changepass', 'Admin\SettingController@changePass')->name('setting.changepass');
 });
 
+// Admin Manager Routes
+Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']], function()
+{
+    // Article Routes
+    Route::resource('article-category', 'Manager\ArticleCategoryController');
+    Route::get('article/approve', 'Manager\ArticleController@approve')->name('article.approve');
+    Route::get('article/pending', 'Manager\ArticleController@pending')->name('article.pending');
+    Route::get('article/reject', 'Manager\ArticleController@reject')->name('article.reject');
+    Route::post('article', 'Manager\ArticleController@store')->name('article.store');
+    Route::put('article/{id}', 'Manager\ArticleController@update')->name('article.update');
+    Route::delete('article/{id}', 'Manager\ArticleController@destroy')->name('article.destroy');
 
-// Author Routes
+    // Issue Routes
+    Route::get('issue/{id}', 'Manager\ArticleIssueController@index')->name('issue.index');
+    Route::post('issue', 'Manager\ArticleIssueController@store')->name('issue.store');
+    Route::put('issue/{id}', 'Manager\ArticleIssueController@update')->name('issue.update');
+    Route::delete('issue/{id}', 'Manager\ArticleIssueController@destroy')->name('issue.destroy');
+
+
+    Route::resource('requirement', 'Manager\RequirementController');
+    Route::resource('reviewer', 'Manager\ReviewerController');
+    Route::resource('author', 'Manager\AuthorController');
+
+    // Comment Route
+    Route::resource('comment', 'Manager\CommentController');
+    // Profile Route
+    Route::resource('profile', 'Manager\ProfileController');
+
+    // Setting Routes
+    Route::get('setting', 'Manager\SettingController@index')->name('setting.index');
+    Route::post('siteinfo', 'Manager\SettingController@siteInfo')->name('setting.siteinfo');
+    Route::post('contactinfo', 'Manager\SettingController@contactInfo')->name('setting.contactinfo');
+    Route::post('socialinfo', 'Manager\SettingController@socialInfo')->name('setting.socialinfo');
+    Route::post('changepass', 'Manager\SettingController@changePass')->name('setting.changepass');
+});
+
+
+// Reviewer Routes
 Route::group(['prefix' => 'dashboard/reviewer', 'as'=>'reviewer.', 'middleware' => ['auth', 'isReviewer']], function()
 {
     // Article Routes
-    Route::get('article/approve', 'Reviewer\ArticleController@approve')->name('article.approve');
-    Route::get('article/pending', 'Reviewer\ArticleController@pending')->name('article.pending');
-    Route::get('article/reject', 'Reviewer\ArticleController@reject')->name('article.reject');
+    Route::get('article/NewRequest', 'Reviewer\ArticleController@NewRequest')->name('article.NewRequest');
+    Route::get('article/pendiWorkInProgressng', 'Reviewer\ArticleController@WorkInProgress')->name('article.WorkInProgress');
+    Route::get('article/PendingAcceptance', 'Reviewer\ArticleController@PendingAcceptance')->name('article.PendingAcceptance');
+    Route::get('article/Closed', 'Reviewer\ArticleController@Closed')->name('article.Closed');
     Route::post('article', 'Reviewer\ArticleController@store')->name('article.store');
     Route::put('article/{id}', 'Reviewer\ArticleController@update')->name('article.update');
     Route::delete('article/{id}', 'Reviewer\ArticleController@destroy')->name('article.destroy');

@@ -16,15 +16,14 @@
         <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="fas fa-newspaper"></i></span>
-                <span> Requests </span>
+                <span> Articles </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
                 <li>
-                    <a href="{{ URL::route('article.NewRequest') }}">New</a>
-                    <a href="{{ URL::route('article.WorkInProgress') }}">Work In Progress</a>
-                    <a href="{{ URL::route('article.PendingAcceptance') }}">Pending Acceptance</a>
-                    <a href="{{ URL::route('article.Closed') }}">Closed</a>
+                    <a href="{{ URL::route('article.approve') }}">Approve List</a>
+                    <a href="{{ URL::route('article.pending') }}">Pending List</a>
+                    <a href="{{ URL::route('article.reject') }}">Reject List</a>
                 </li>
             </ul>
         </li>
@@ -36,7 +35,7 @@
             </a>
         </li>
 
-        <!--li>
+        <li>
             <a href="{{ URL::route('comment.index') }}">
                 <span class="icon"><i class="fas fa-comments"></i></span>
                 <span> Comments </span>
@@ -48,7 +47,7 @@
                 <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
                 <span> Requirements </span>
             </a>
-        </li-->
+        </li>
 
         <li>
             <a href="{{ URL::route('reviewer.index') }}">
@@ -84,18 +83,15 @@
         <li>
             <a href="javascript: void(0);">
                 <span class="icon"><i class="fas fa-newspaper"></i></span>
-                <span> Requests </span>
+                <span> Articles </span>
                 <span class="menu-arrow"></span>
             </a>
             <ul class="nav-second-level" aria-expanded="false">
-                
                 <li>
-                    <a href="{{ URL::route('reviewer.article.NewRequest') }}">New</a>
-                    <a href="{{ URL::route('reviewer.article.WorkInProgress') }}">Work In Progress</a>
-                    <a href="{{ URL::route('reviewer.article.PendingAcceptance') }}">Pending Acceptance</a>
-                    <a href="{{ URL::route('reviewer.article.Closed') }}">Closed</a>
+                    <a href="{{ URL::route('reviewer.article.approve') }}">Approve List</a>
+                    <a href="{{ URL::route('reviewer.article.pending') }}">Pending List</a>
+                    <a href="{{ URL::route('reviewer.article.reject') }}">Reject List</a>
                 </li>
-              
             </ul>
         </li>
 
@@ -112,7 +108,7 @@
         <li>
             <a href="{{ URL::route('author.article.index') }}">
                 <span class="icon"><i class="fas fa-newspaper"></i></span>
-                <span> Requests </span>
+                <span> Articles </span>
             </a>
         </li>
 

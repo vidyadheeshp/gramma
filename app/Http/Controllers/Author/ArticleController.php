@@ -23,7 +23,7 @@ class ArticleController extends Controller
     public function __construct()
     {
         // Page Data
-        $this->title = 'Article';
+        $this->title = 'Request';
         $this->url = 'article';
     }
 

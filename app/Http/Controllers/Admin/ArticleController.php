@@ -23,7 +23,7 @@ class ArticleController extends Controller
     public function __construct()
     {
         // Page Data
-        $this->title = 'Article';
+        $this->title = 'Request';
         $this->url = 'article';
     }
 
@@ -32,35 +32,36 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function approve()
+    public function NewRequest()
     {
         //
         $rows = Article::where('review_status', '2')->orderBy('updated_at', 'desc')->get();
         $categories = ArticleCategory::where('status', '1')->get();
 
-        $title = 'Approve Article';
+        $title = 'New Request';
         $url = $this->url;
 
-        $route_name = 'approve';
+        $route_name = 'NewRequest';
 
         return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
     }
+    
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function pending()
+    public function WorkInProgress()
     {
         //
         $rows = Article::where('review_status', '1')->orderBy('updated_at', 'desc')->get();
         $categories = ArticleCategory::where('status', '1')->get();
 
-        $title = 'Pending Article';
+        $title = 'Work In Progress';
         $url = $this->url;
 
-        $route_name = 'pending';
+        $route_name = 'WorkInProgress';
 
         return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
     }
@@ -70,16 +71,35 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function reject()
+    public function PendingAcceptance()
     {
         //
         $rows = Article::where('review_status', '0')->orderBy('updated_at', 'desc')->get();
         $categories = ArticleCategory::where('status', '1')->get();
 
-        $title = 'Reject Article';
+        $title = 'Pending Acceptance';
         $url = $this->url;
 
-        $route_name = 'reject';
+        $route_name = 'PendingAcceptance';
+
+        return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function Closed()
+    {
+        //
+        $rows = Article::where('review_status', '0')->orderBy('updated_at', 'desc')->get();
+        $categories = ArticleCategory::where('status', '1')->get();
+
+        $title = 'Closed Requests';
+        $url = $this->url;
+
+        $route_name = 'Closed';
 
         return view('admin.'.$url.'.index', compact('rows', 'categories', 'title', 'url', 'route_name'));
     }
