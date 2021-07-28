@@ -36,15 +36,15 @@
 
                   <!-- Data Table Start -->
                   <div class="table-responsive">
-                    <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap" style="width:100%">
+                    <table id="basic-datatable" class="table table-striped table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                <th>Category</th>
-                                <th>Submit Status</th>
+                                <!--th>Category</th-->
+                                <!--th>Submit Status</th-->
                                 <th>Review Status</th>
-                                <th>Status</th>
+                                <!--th>Status</th-->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -53,30 +53,33 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $row->title }}</td>
-                                <td>{{ $row->category->title }}</td>
-                                <td>
+                                <!--td>{{ $row->category->title }}</td-->
+                                <!--td>
                                     @if( $row->upload_status == 1 )
                                     <span class="badge badge-default badge-pill">New Upload</span>
                                     @elseif( $row->upload_status == 2 )
                                     <span class="badge badge-default badge-pill">Resubmit</span>
                                     @endif
-                                </td>
+                                </td-->
                                 <td>
-                                    @if( $row->review_status == 2 )
-                                    <span class="badge badge-success badge-pill">Approve</span>
-                                    @elseif( $row->review_status == 1 )
-                                    <span class="badge badge-primary badge-pill">Pending</span>
+                                    <!-- 1 : New Request , 2: Work in Progress, 3: Pending Acceptance 4: Closed-->
+                                    @if( $row->review_status == 1 )
+                                    <span class="badge badge-success badge-pill">New Request</span>
+                                    @elseif( $row->review_status == 2 )
+                                    <span class="badge badge-primary badge-pill">Work in Progress</span>
+                                    @elseif( $row->review_status == 3 )
+                                    <span class="badge badge-warning badge-pill">Pending Acceptance</span>
                                     @else
-                                    <span class="badge badge-danger badge-pill">Reject</span>
+                                    <span class="badge badge-danger badge-pill">Closed</span>
                                     @endif
                                 </td>
-                                <td>
+                                <!--td>
                                     @if( $row->status == 1 )
                                     <span class="badge badge-success badge-pill">Active</span>
                                     @else
                                     <span class="badge badge-danger badge-pill">Inactive</span>
                                     @endif
-                                </td>
+                                </td-->
                                 <td>
                                     <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#showModal-{{ $row->id }}">
                                         <i class="fas fa-eye"></i>

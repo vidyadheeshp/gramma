@@ -67,10 +67,10 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|max:250',
             'category' => 'required',
-            'details' => 'required',
-            'image' => 'nullable|image',
+            //'details' => 'required',
+            //'image' => 'nullable|image',
             'file' => 'nullable|file',
-            'video_id' => 'nullable|max:100',
+            //'video_id' => 'nullable|max:100',
         ]);
 
 
@@ -98,7 +98,7 @@ class ArticleController extends Controller
 
 
         // image upload, fit and store inside public folder 
-        if($request->hasFile('image')){
+        /*if($request->hasFile('image')){
             //Upload New Image
             $filenameWithExt = $request->file('image')->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
@@ -117,7 +117,7 @@ class ArticleController extends Controller
         }
         else{
             $imageNameToStore = 'no_image.jpg';
-        }
+        } */
 
 
         // Insert Data
@@ -125,10 +125,10 @@ class ArticleController extends Controller
         $data->title = $request->title;
         $data->category_id = $request->category;
         $data->writer_id = Auth::user()->id;
-        $data->description = $request->details;
-        $data->image_path = $imageNameToStore;
+        $data->description = '';
+        $data->image_path = '';
         $data->file_path = $fileNameToStore;
-        $data->video_id = $request->video_id;
+        $data->video_id = '';
         $data->upload_status = 1;
         $data->review_status = 1;
         $data->status = 1;
@@ -176,10 +176,10 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|max:250',
             'category' => 'required',
-            'details' => 'required',
-            'image' => 'nullable|image',
+            //'details' => 'required',
+            //'image' => 'nullable|image',
             'file' => 'nullable|file',
-            'video_id' => 'nullable|max:100',
+            //'video_id' => 'nullable|max:100',
         ]);
 
 
@@ -222,7 +222,7 @@ class ArticleController extends Controller
 
 
             // image upload, fit and store inside public folder 
-            if($request->hasFile('image')){
+            /*if($request->hasFile('image')){
 
                 //Delete Old Image
                 $old_file = Article::find($id);
@@ -253,17 +253,17 @@ class ArticleController extends Controller
                 $old_file = Article::find($id);
 
                 $imageNameToStore = $old_file->image_path; 
-            }
+            }*/
 
 
             // Update Data
             $data = Article::find($id);
             $data->title = $request->title;
             $data->category_id = $request->category;
-            $data->description = $request->details;
-            $data->image_path = $imageNameToStore;
+            $data->description = '';
+            $data->image_path = '';
             $data->file_path = $fileNameToStore;
-            $data->video_id = $request->video_id;
+            $data->video_id = '';
             $data->upload_status = 2;
             $data->updated_by = Auth::user()->id;
             $data->save();

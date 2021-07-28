@@ -12,63 +12,63 @@
                 <div class="modal-body">
                     <!-- Form Start -->
                     <div class="form-group">
-                        <label for="title">Article Title</label>
+                        <label for="title">Document Title</label>
                         <input type="text" class="form-control" name="title" id="title" value="{{ $row->title }}" placeholder="Article Title" required>
 
                         <div class="invalid-feedback">
-                          Please Provide Article Title.
+                          Please Provide Document Title.
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="category">Select Category</label>
+                        <label for="category">Select a Service</label>
                         <select class="form-control" name="category" id="category" required>
-                            <option value="">Select Category</option>
+                            <option value="">Select Service</option>
                             @foreach( $categories as $category )
                             <option value="{{ $category->id }}" @if( $category->id == $row->category_id ) selected @endif>{{ $category->title }}</option>
                             @endforeach
                         </select>
 
                         <div class="invalid-feedback">
-                          Please Select Article Category.
+                          Please Select Document Service.
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="details">Article Details</label>
+                    <!--div class="form-group">
+                        <label for="details">Document Details</label>
                         <textarea class="form-control summernote" name="details" id="details" rows="8" required>{{ $row->description }}</textarea>
 
                         <div class="invalid-feedback">
-                          Please Provide Article Details.
+                          Please Provide Document Details.
                         </div>
-                    </div>
+                    </div-->
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label for="image">Thumbnail Image</label>
                         <input type="file" class="form-control" name="image" id="image" placeholder="Thumbnail Image">
 
                         <div class="invalid-feedback">
                           Please Provide Thumbnail Image.
                         </div>
-                    </div>
+                    </div-->
 
                     <div class="form-group">
                         <label for="file">Upload Document</label>
-                        <input type="file" class="form-control" name="file" id="file" placeholder="Upload Document">
+                        <input type="file" class="form-control" name="file" id="file" placeholder="Upload Document" value="upload/article/{{ $row->file_path }}">
 
                         <div class="invalid-feedback">
-                          Please Provide Artilce Document.
+                          Please Provide the Upload Document.
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label for="video_id">Youtube Video ID</label>
                         <input type="text" class="form-control" name="video_id" id="video_id" value="{{ $row->video_id }}" placeholder="Video ID">
 
                         <div class="invalid-feedback">
                           Please Provide Youtube Video ID.
                         </div>
-                    </div>
+                    </div-->
                     <!-- Form End -->
                 </div>
                 <div class="modal-footer">

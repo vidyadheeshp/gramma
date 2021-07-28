@@ -11,7 +11,7 @@
                     <h4><span class="text-highlight">Title:</span> {{ $row->title }}</h4>
 
                     @if(is_file('uploads/'.$url.'/'.$row->image_path))
-                    <img src="{{ asset('uploads/'.$url.'/'.$row->image_path) }}" class="img-fluid" alt="Article">
+                    <!--img src="{{ asset('uploads/'.$url.'/'.$row->image_path) }}" class="img-fluid" alt="Article"-->
                     <br/>
                     @endif
 
@@ -21,34 +21,37 @@
                     @endif
 
                     @if(!empty($row->video_id))
-                    <p><span class="text-highlight">Youtube Video:</span></p>
+                    <!--p><span class="text-highlight">Youtube Video:</span></p>
                     <div class="embed-responsive embed-responsive-16by9">
                       <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ $row->video_id }}?rel=0" allowfullscreen></iframe>
                     </div>
-                    <br/>
+                    <br/-->
                     @endif
 
                     <hr/>
-                    <p><span class="text-highlight">Category:</span> {{ $row->category->title }}</p>
-                    <p><span class="text-highlight">Details:</span> {!! $row->description !!}</p>
+                    <p><span class="text-highlight">Service:</span> {{ $row->category->title }}</p>
+                    <!--p><span class="text-highlight">Details:</span> {!! $row->description !!}</p-->
 
                     <hr/>
+                    <!-- 1 : New Request , 2: Work in Progress, 3: Pending Acceptance 4: Closed-->
                     <p><span class="text-highlight">Review Status:</span> 
-                    @if( $row->review_status == 2 )
-                    <span class="badge badge-success badge-pill">Approve</span>
-                    @elseif( $row->review_status == 1 )
-                    <span class="badge badge-primary badge-pill">Pending</span>
+                    @if( $row->review_status == 1 )
+                    <span class="badge badge-success badge-pill">New Request</span>
+                    @elseif( $row->review_status == 2 )
+                    <span class="badge badge-primary badge-pill">Work in Progress</span>
+                    @elseif( $row->review_status == 3 )
+                    <span class="badge badge-warning badge-pill">Pending Acceptance</span>
                     @else
-                    <span class="badge badge-danger badge-pill">Reject</span>
+                    <span class="badge badge-danger badge-pill">Closed</span>
                     @endif
                     </p>
-                    <p><span class="text-highlight">Status:</span> 
+                    <!--p><span class="text-highlight">Status:</span> 
                     @if( $row->status == 1 )
                     <span class="badge badge-success badge-pill">Active</span>
                     @else
                     <span class="badge badge-danger badge-pill">Inactive</span>
                     @endif
-                    </p>
+                    </p-->
                     <!-- Details View End -->
                 </div>
                 <div class="modal-footer">
