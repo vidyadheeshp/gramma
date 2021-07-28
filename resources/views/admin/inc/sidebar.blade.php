@@ -112,7 +112,7 @@
         <li>
             <a href="{{ URL::route('author.article.index') }}">
                 <span class="icon"><i class="fas fa-newspaper"></i></span>
-                <span> Requests </span>
+                <span> My Requests </span>
             </a>
         </li>
 
