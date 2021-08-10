@@ -13,6 +13,10 @@
 
     <div class="row">
         <div class="col-12">
+            <!-- Add modal button -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add New</button>
+            <!-- Include Add modal -->
+            @include('admin.'.$url.'.create')
             <a href="{{ URL::route($url.'.index') }}" class="btn btn-info">Refresh</a>
         </div>
     </div>
@@ -31,7 +35,7 @@
 
                   <!-- Data Table Start -->
                   <div class="table-responsive">
-                    <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap" style="width:100%">
+                    <table id="basic-datatable" class="table table-striped table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
