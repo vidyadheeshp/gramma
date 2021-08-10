@@ -199,7 +199,7 @@ class ReviewerController extends Controller
 
 
         // Update Data
-         $data = new User;
+        $data = User::find($id);
          $data->name = $request->name;
          $data->email = $request->email;
          $data->password = Hash::make($request->password);

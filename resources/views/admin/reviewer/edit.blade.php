@@ -22,7 +22,7 @@
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" id="email" disabled placeholder="Email" value="{{ $row->email }}" required>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ $row->email }}" required>
 
                         <div class="invalid-feedback">
                           Please Provide Email Address.
