@@ -12,16 +12,16 @@
                 <div class="modal-body">
                     <!-- Form Start -->
                     <div class="form-group">
-                        <label for="title">Category Title</label>
-                        <input type="text" class="form-control" name="title" id="title" value="{{ $row->title }}" placeholder="Category Title" required>
+                        <label for="title">Service Title</label>
+                        <input type="text" class="form-control" name="title" id="title" value="{{ $row->title }}" placeholder="Service Title" required>
 
                         <div class="invalid-feedback">
-                          Please Provide Category Title.
+                          Please Provide Service Title.
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="details">Category Details</label>
+                        <label for="details">Service Details</label>
                         <textarea class="form-control summernote" name="details" id="details" rows="8">{!! $row->description !!}</textarea>
                     </div>
 
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="status">Select Status</label>
+                        <label for="status">Set Status</label>
                         <select class="wide" name="status" id="status" data-plugin="customselect">
                             <option value="1" @if( $row->status == 1 ) selected @endif>Active</option>
                             <option value="0" @if( $row->status == 0 ) selected @endif>Inactive</option>

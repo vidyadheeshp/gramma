@@ -36,7 +36,7 @@
 
                   <!-- Data Table Start -->
                   <div class="table-responsive">
-                    <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap" style="width:100%">
+                    <table id="basic-datatable" class="table table-striped table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -59,6 +59,26 @@
                                     </button>
                                     <!-- Include Show modal -->
                                     @include('admin.'.$url.'.show')
+
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal-{{ $row->id }}">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Include Edit modal -->
+                                    @include('admin.'.$url.'.edit')
+
+                                    <!-- Reviewer Activation button-->
+                                    @if( $row->status == 1 )                                 
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#activationmodel-{{ $row->id }}">
+                                        <i class="fas fa-user-tag"></i>
+                                    </button>
+                                    @endif
+                                    @if( $row->status == 0 )
+                                    <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#activationmodel-{{ $row->id }}">
+                                        <i class="fas fa-user-tag"></i>
+                                    </button>
+                                    @endif
+                                    <!-- Include Activation modal -->
+                                    @include('admin.'.$url.'.activation')
 
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $row->id }}">
                                         <i class="fas fa-trash-alt"></i>

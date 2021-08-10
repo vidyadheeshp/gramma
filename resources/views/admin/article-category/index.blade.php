@@ -36,7 +36,7 @@
 
                   <!-- Data Table Start -->
                   <div class="table-responsive">
-                    <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap" style="width:100%">
+                    <table id="basic-datatable" class="table table-striped table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>

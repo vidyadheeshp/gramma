@@ -22,7 +22,7 @@ class ArticleCategoryController extends Controller
     public function __construct()
     {
         // Page Data
-        $this->title = 'Article Category';
+        $this->title = 'Services';
         $this->url = 'article-category';
     }
 

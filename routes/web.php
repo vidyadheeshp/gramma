@@ -75,7 +75,11 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']
     Route::resource('requirement', 'Admin\RequirementController');
     Route::resource('reviewer', 'Admin\ReviewerController');
     Route::resource('author', 'Admin\AuthorController');
+    
+    //reviewer status updation (Activation/Deactivation)new routes 
+    Route::put('reviewer/activation/{id}', 'Admin\ReviewerController@activation')->name('reviewer.activation');
 
+    
     // Comment Route
     Route::resource('comment', 'Admin\CommentController');
     // Profile Route
@@ -90,7 +94,7 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']
 });
 
 // Admin Manager Routes
-Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']], function()
+/*Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']], function()
 {
     // Article Routes
     Route::resource('article-category', 'Manager\ArticleCategoryController');
@@ -125,6 +129,7 @@ Route::group(['prefix' => 'dashboard/admin', 'middleware' => ['auth', 'isAdmin']
     Route::post('changepass', 'Manager\SettingController@changePass')->name('setting.changepass');
 });
 
+*/
 
 // Reviewer Routes
 Route::group(['prefix' => 'dashboard/reviewer', 'as'=>'reviewer.', 'middleware' => ['auth', 'isReviewer']], function()

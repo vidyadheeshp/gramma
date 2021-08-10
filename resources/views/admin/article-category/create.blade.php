@@ -12,16 +12,16 @@
                 <div class="modal-body">
                     <!-- Form Start -->
                     <div class="form-group">
-                        <label for="title">Category Title</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Category Title" required>
+                        <label for="title">Service Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Service Title" required>
 
                         <div class="invalid-feedback">
-                          Please Provide Category Title.
+                          Please Provide Service Title.
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="details">Category Details</label>
+                        <label for="details">Service Details</label>
                         <textarea class="form-control summernote" name="details" id="details" rows="8"></textarea>
                     </div>
 

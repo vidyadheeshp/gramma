@@ -70,6 +70,7 @@ class DashboardController extends Controller
                                 ->where('comments.status', 1)
                                 ->get();
             $users = '';
+            $reviewers = '';
 
         }
         else{
@@ -83,9 +84,10 @@ class DashboardController extends Controller
             $issue = '';
             $comment = Comment::all();
             $users = User::where('user_type', 'W')->get();
+            $reviewers = User::where('user_type', 'R')->get();
 
         }
 
-        return view('admin.index', compact('title', 'url', 'rows', 'approve', 'pending', 'issue', 'comment', 'users'));
+        return view('admin.index', compact('title', 'url', 'rows', 'approve', 'pending', 'issue', 'comment', 'users', 'reviewers'));
     }
 }

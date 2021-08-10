@@ -133,7 +133,7 @@ class ReviewerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
         //
     }
@@ -147,7 +147,97 @@ class ReviewerController extends Controller
      */
     public function update(Request $request, $id)
     {
+            // Field Validation
+         // Field Validation
+         $request->validate([
+            'name' => 'required|max:250',
+            'email' => 'required|max:250|unique:users',
+            'password' => 'required|min:8',
+            'phone' => 'nullable|max:50',
+            'address' => 'required',
+            'dob' => 'required|date|before_or_equal:today',
+            'image' => 'nullable|image',
+        ]);
 
+
+        
+
+
+        // image upload, fit and store inside public folder 
+        if($request->hasFile('image')){
+
+            //Delete Old Image
+            $old_file = Article::find($id);
+
+            $file_path = base_path('uploads/'.$this->url.'/'.$old_file->image_path);
+            if(File::isFile($file_path)){
+                File::delete($file_path);
+            }
+
+            //Upload New Image
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME); 
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $imageNameToStore = $filename.'_'.time().'.'.$extension;
+
+            //Crete Folder Location
+            $path = base_path('uploads/'.$this->url.'/');
+            if (! File::exists($path)) {
+                File::makeDirectory($path, 0777, true, true);
+            }
+
+            //Resize And Crop as Fit image here (640 width, 400 height)
+            $thumbnailpath = $path.$imageNameToStore;
+            $img = Image::make($request->file('image')->getRealPath())->fit(640, 400, function ($constraint) { $constraint->upsize(); })->save($thumbnailpath);
+        }
+        else{
+
+            $old_file = Article::find($id);
+
+            $imageNameToStore = $old_file->image_path; 
+        }
+
+
+        // Update Data
+         $data = new User;
+         $data->name = $request->name;
+         $data->email = $request->email;
+         $data->password = Hash::make($request->password);
+         $data->phone = $request->phone;
+         $data->address = $request->address;
+         $data->dob = $request->dob;
+         $data->image_path = $fileNameToStore;
+         $data->profile = $request->details;
+         $data->user_type = 'R';
+         $data->status = 1;
+         $data->save();
+
+
+        Session::flash('success', $this->title.' Updated Successfully!');
+
+        return redirect()->back();
+    }
+
+    /* Custom function for activating / deactivating the reviewer
+        this will change the status in the db*/
+    public function activation(Request $request, $id)
+    {
+          //// Field Validation
+         $request->validate([
+            'status' => 'required',
+        ]);
+
+
+        // Update Data
+        $data = User::find($id);
+        $data->status = $request->status;
+        $data->save();
+
+
+        Session::flash('success', $this->title.' Information Updated Successfully!');
+
+        return redirect()->back();
+         
     }
 
     /**

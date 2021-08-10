@@ -32,7 +32,7 @@
         <li>
             <a href="{{ URL::route('article-category.index') }}">
                 <span class="icon"><i class="fas fa-align-justify"></i></span>
-                <span> Article Category </span>
+                <span> Services </span>
             </a>
         </li>
 

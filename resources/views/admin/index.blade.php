@@ -18,7 +18,7 @@
                         <div class="float-right">
                             <span class="icon text-primary widget-icon"><i class="fas fa-newspaper"></i></span>
                         </div>
-                        <h5 class="text-muted font-weight-normal mt-0">Approve Articles</h5>
+                        <h5 class="text-muted font-weight-normal mt-0">Approved Requests</h5>
                         <h3 class="mt-2">{{ $approve->count() }}</h3>
                     </div>
                 </div> <!-- end card-body-->
@@ -32,28 +32,31 @@
                         <div class="float-right">
                             <span class="icon text-danger widget-icon"><i class="fas fa-edit"></i></span>
                         </div>
-                        <h5 class="text-muted font-weight-normal mt-0">Pending Articles</h5>
+                        <h5 class="text-muted font-weight-normal mt-0">Pending Requests</h5>
                         <h3 class="mt-2">{{ $pending->count() }}</h3>
                     </div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
 
+        
+
+        @can('isAdmin')
+
         <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
                     <div class="p-3 pb-0">
                         <div class="float-right">
-                            <span class="icon text-primary widget-icon"><i class="fas fa-comments"></i></span>
+                            <span class="icon text-primary widget-icon"><i class="fas fa-user-tag"></i></span>
                         </div>
-                        <h5 class="text-muted font-weight-normal mt-0">Total Comments</h5>
-                        <h3 class="mt-2">{{ $comment->count() }}</h3>
+                        <h5 class="text-muted font-weight-normal mt-0">Total Reviewers</h5>
+                        <h3 class="mt-2">{{ $reviewers->count() }}</h3>
                     </div>
                 </div> <!-- end card-body-->
             </div> <!-- end card-->
         </div> <!-- end col-->
-
-        @can('isAdmin')
+        
         <div class="col-xl-3 col-lg-6">
             <div class="card widget-flat">
                 <div class="card-body p-0">
@@ -114,13 +117,13 @@
 
                   <!-- Data Table Start -->
                   <div class="table-responsive">
-                    <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap" style="width:100%">
+                    <table id="basic-datatable" class="table table-striped table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
                                 <th>Category</th>
-                                <th>Submit Status</th>
+                                <!--th>Submit Status</th-->
                                 <th>Review Status</th>
                             </tr>
                         </thead>
@@ -130,20 +133,22 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $row->title }}</td>
                                 <td>{{ $row->category->title }}</td>
-                                <td>
+                                <!--td>
                                     @if( $row->upload_status == 1 )
                                     <span class="badge badge-default badge-pill">New Upload</span>
                                     @elseif( $row->upload_status == 2 )
                                     <span class="badge badge-default badge-pill">Resubmit</span>
                                     @endif
-                                </td>
+                                </td-->
                                 <td>
-                                    @if( $row->review_status == 2 )
-                                    <span class="badge badge-success badge-pill">Approve</span>
-                                    @elseif( $row->review_status == 1 )
-                                    <span class="badge badge-primary badge-pill">Pending</span>
+                                    @if( $row->review_status == 1 )
+                                    <span class="badge badge-success badge-pill">New Request</span>
+                                    @elseif( $row->review_status == 2 )
+                                    <span class="badge badge-primary badge-pill">Work in Progress</span>
+                                    @elseif( $row->review_status == 3 )
+                                    <span class="badge badge-warning badge-pill">Pending Acceptance</span>
                                     @else
-                                    <span class="badge badge-danger badge-pill">Reject</span>
+                                    <span class="badge badge-danger badge-pill">Closed</span>
                                     @endif
                                 </td>
                             </tr>
@@ -172,13 +177,13 @@
 
                   <!-- Data Table Start -->
                   <div class="table-responsive">
-                    <table id="basic-datatable" class="table table-striped table-hover table-dark nowrap" style="width:100%">
+                    <table id="basic-datatable" class="table table-striped table-hover nowrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
                                 <th>Category</th>
-                                <th>Submit Status</th>
+                                <!--th>Submit Status</th-->
                                 <th>Review Status</th>
                             </tr>
                         </thead>
@@ -188,20 +193,22 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $row->title }}</td>
                                 <td>{{ $row->category->title }}</td>
-                                <td>
+                                <!--td>
                                     @if( $row->upload_status == 1 )
                                     <span class="badge badge-default badge-pill">New Upload</span>
                                     @elseif( $row->upload_status == 2 )
                                     <span class="badge badge-default badge-pill">Resubmit</span>
                                     @endif
-                                </td>
+                                </td-->
                                 <td>
-                                    @if( $row->review_status == 2 )
-                                    <span class="badge badge-success badge-pill">Approve</span>
-                                    @elseif( $row->review_status == 1 )
-                                    <span class="badge badge-primary badge-pill">Pending</span>
+                                    @if( $row->review_status == 1 )
+                                    <span class="badge badge-success badge-pill">New Request</span>
+                                    @elseif( $row->review_status == 2 )
+                                    <span class="badge badge-primary badge-pill">Work in Progress</span>
+                                    @elseif( $row->review_status == 3 )
+                                    <span class="badge badge-warning badge-pill">Pending Acceptance</span>
                                     @else
-                                    <span class="badge badge-danger badge-pill">Reject</span>
+                                    <span class="badge badge-danger badge-pill">Closed</span>
                                     @endif
                                 </td>
                             </tr>
