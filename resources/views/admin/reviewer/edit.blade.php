@@ -20,7 +20,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ $row->email }}" required>
 
@@ -36,7 +36,7 @@
                         <div class="invalid-feedback">
                           Please Provide A Password.
                         </div>
-                    </div>
+                    </div-->
 
                     <div class="form-group">
                         <label for="phone">Phone</label>
@@ -65,18 +65,18 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!--div class="form-group">
                         <label for="image">Photo</label>
                         <input type="file" class="form-control" name="image" id="image"   placeholder="Photo">
 
                         <div class="invalid-feedback">
                           Please Provide Profile Photo.
                         </div>
-                    </div>
+                    </div-->
 
                     <div class="form-group">
                         <label for="details">Profile Details</label>
-                        <textarea class="form-control summernote" name="details" id="details" rows="8">{{ $row->details }}</textarea>
+                        <textarea class="form-control summernote" name="details" id="details" rows="8">{{ $row->profile }}</textarea>
                     </div>
                     <!-- Form End -->
                 </div>

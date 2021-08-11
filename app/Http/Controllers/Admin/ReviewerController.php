@@ -151,12 +151,12 @@ class ReviewerController extends Controller
          // Field Validation
          $request->validate([
             'name' => 'required|max:250',
-            'email' => 'required|max:250|unique:users',
-            'password' => 'required|min:8',
+            //'email' => 'required|max:250|unique:users',
+            //'password' => 'required|min:8',
             'phone' => 'nullable|max:50',
             'address' => 'required',
             'dob' => 'required|date|before_or_equal:today',
-            'image' => 'nullable|image',
+            //'image' => 'nullable|image',
         ]);
 
 
@@ -164,7 +164,7 @@ class ReviewerController extends Controller
 
 
         // image upload, fit and store inside public folder 
-        if($request->hasFile('image')){
+        /*if($request->hasFile('image')){
 
             //Delete Old Image
             $old_file = Article::find($id);
@@ -195,18 +195,18 @@ class ReviewerController extends Controller
             $old_file = Article::find($id);
 
             $imageNameToStore = $old_file->image_path; 
-        }
+        }*/
 
 
         // Update Data
         $data = User::find($id);
          $data->name = $request->name;
-         $data->email = $request->email;
-         $data->password = Hash::make($request->password);
+         //$data->email = $request->email;
+         //$data->password = Hash::make($request->password);
          $data->phone = $request->phone;
          $data->address = $request->address;
          $data->dob = $request->dob;
-         $data->image_path = $fileNameToStore;
+         //$data->image_path = $fileNameToStore;
          $data->profile = $request->details;
          $data->user_type = 'R';
          $data->status = 1;
