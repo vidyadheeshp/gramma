@@ -4,7 +4,7 @@
 
 <!-- Start Content-->
 <div class="container-fluid">
-    
+    <!--This is index page of Services list available in admin login-->
     <!-- start page title -->
     <!-- Include page breadcrumb -->
     @include('admin.inc.breadcrumb')
@@ -41,7 +41,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                <th>Show To Home</th>
+                                <th>Amount</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -51,13 +51,14 @@
                             <tr>
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $row->title }}</td>
-                                <td>
-                                    @if( $row->home_flag == 1 )
+                                <td>Rs.{{ $row->amount }} /-</td>
+                                <!--td>
+                                    @//if( $row->home_flag == 1 )
                                     <span class="badge badge-success">Yes</span>
-                                    @else
+                                    @//else
                                     <span class="badge badge-danger">No</span>
-                                    @endif
-                                </td>
+                                    @//endif
+                                </td-->
                                 <td>
                                     @if( $row->status == 1 )
                                     <span class="badge badge-success badge-pill">Active</span>
@@ -78,10 +79,10 @@
                                     <!-- Include Edit modal -->
                                     @include('admin.'.$url.'.edit')
 
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $row->id }}">
+                                    <!--button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $row->id }}">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
-                                    <!-- Include Delete modal -->
+                                    < Include Delete modal -->
                                     @include('admin.inc.delete')
                                 </td>
                             </tr>

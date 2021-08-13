@@ -19,6 +19,14 @@
                           Please Provide Service Title.
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="title">Service Charge</label>
+                        <input type="text" class="form-control" name="amount" id="amount" placeholder="Service Charge" required>
+
+                        <div class="invalid-feedback">
+                          Please Provide charge for the Service.
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="details">Service Details</label>

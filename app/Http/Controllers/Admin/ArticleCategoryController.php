@@ -68,6 +68,7 @@ class ArticleCategoryController extends Controller
         // Insert Data
         $data = new ArticleCategory;
         $data->title = $request->title;
+        $data->amount = $request->amount;
         $data->description = $request->details;
         $data->home_flag = $request->home_flag;
         $data->status = 1;
@@ -119,6 +120,7 @@ class ArticleCategoryController extends Controller
         // Update Data
         $data = ArticleCategory::find($id);
         $data->title = $request->title;
+        $data->amount = $request->amount;
         $data->description = $request->details;
         $data->home_flag = $request->home_flag;
         $data->status = $request->status;

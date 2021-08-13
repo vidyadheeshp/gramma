@@ -10,6 +10,7 @@
                     <!-- Details View Start -->
                     <h4><span class="text-highlight">Title:</span> {{ $row->title }}</h4>
                     <hr/>
+                    <p><span class="text-highlight">Charge:</span> Rs.{!! $row->amount !!} /-</p>
                     <p><span class="text-highlight">Details:</span> {!! $row->description !!}</p>
                     <p><span class="text-highlight">Show To Home:</span> 
                         @if( $row->home_flag == 1 )
