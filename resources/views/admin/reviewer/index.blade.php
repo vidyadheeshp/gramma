@@ -80,7 +80,7 @@
                                     <!-- Include Activation modal -->
                                     @include('admin.'.$url.'.activation')
 
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $row->id }}">
+                                    <!--button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $row->id }}">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                     <!-- Include Delete modal -->

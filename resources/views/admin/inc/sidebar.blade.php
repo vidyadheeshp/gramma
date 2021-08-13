@@ -60,7 +60,7 @@
         <li>
             <a href="{{ URL::route('author.index') }}">
                 <span class="icon"><i class="fas fa-user-edit"></i></span>
-                <span> Authors </span>
+                <span> Customers </span>
             </a>
         </li>
 

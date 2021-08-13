@@ -23,7 +23,7 @@ class AuthorController extends Controller
     public function __construct()
     {
         // Page Data
-        $this->title = 'Author';
+        $this->title = 'Customer';
         $this->url = 'author';
     }
 
