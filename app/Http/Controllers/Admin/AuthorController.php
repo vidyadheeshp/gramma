@@ -147,7 +147,37 @@ class AuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         // Field Validation
+         $request->validate([
+            'name' => 'required|max:250',
+            //'email' => 'required|max:250|unique:users',
+            //'password' => 'required|min:8',
+            'phone' => 'nullable|max:50',
+            'address' => 'required',
+            'dob' => 'required|date|before_or_equal:today',
+            //'image' => 'nullable|image',
+        ]);
+
+
+
+        // update Data
+        $data = User::find($id);
+        $data->name = $request->name;
+        //$data->email = $request->email;
+        //$data->password = Hash::make($request->password);
+        $data->phone = $request->phone;
+        $data->address = $request->address;
+        $data->dob = $request->dob;
+        //$data->image_path = $fileNameToStore;
+        $data->profile = $request->details;
+        $data->user_type = 'W';
+        $data->status = 1;
+        $data->save();
+
+
+        Session::flash('success', $this->title.' Updated Successfully!');
+
+        return redirect()->back();
     }
 
     /**

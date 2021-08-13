@@ -59,6 +59,12 @@
                                     <!-- Include Show modal -->
                                     @include('admin.'.$url.'.show')
 
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal-{{ $row->id }}">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <!-- Include edit modal -->
+                                    @include('admin.'.$url.'.edit')
+
                                     <!--button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal-{{ $row->id }}">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
