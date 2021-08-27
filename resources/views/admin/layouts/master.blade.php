@@ -20,6 +20,9 @@
         <title>@yield('title')</title>
         @endif
 
+        <!-- Latest compiled and minified CSS : Bootstrap CDN link-->
+        <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"-->
+
         <!-- App css -->
         <link href="{{ asset('backend/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('backend/css/all.min.css') }}" rel="stylesheet" type="text/css" />
@@ -222,6 +225,87 @@
         
 
         <script src="{{ asset('backend/js/app.js') }}"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <!--script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script-->
+        <script>
+            //Jquery Starts
+            $(document).ready(function(){
 
+                $(document).on('change','#services',function(){
+                    var Service_val = $(this).val();
+                    if(Service_val == 1 ){
+                            $('#5day').text(100);
+                            $('#48hrs').text(150);
+                            $('#24hrs').text(200);
+                            $('#12hrs').text(300);
+                        }else if(Service_val == 2){
+                            $('#5day').text(120);
+                            $('#48hrs').text(170);
+                            $('#24hrs').text(220);
+                            $('#12hrs').text(320);
+                        }else if(Service_val == 3){
+                            $('#5day').text(150);
+                            $('#48hrs').text(200);
+                            $('#24hrs').text(250);
+                            $('#12hrs').text(350);
+                        }else{
+                            $('#5day').text(200);
+                            $('#48hrs').text(250);
+                            $('#24hrs').text(280);
+                            $('#12hrs').text(400);
+                        }
+                });
+
+                $(document).on('click','#checlbtn',function(){
+                    var Service_val = $('#services').val();
+                    var words_val = $('#nowords').val();
+                    var delivery = $('input[name="flexRadioDefault"]:checked').val();
+
+                    if(Service_val = 1){ // Service 1 : Proof Reading and Editing
+                        if(0 < words_val && words_val< 50 ){
+                            $('#5day').text(100);
+                            $('#48hrs').text(150);
+                            $('#24hrs').text(200);
+                            $('#12hrs').text(300);
+                        }else if(50 < words_val && words_val< 100 ){
+                            $('#5day').text(120);
+                            $('#48hrs').text(170);
+                            $('#24hrs').text(220);
+                            $('#12hrs').text(320);
+                        }else if(100 < words_val &&  words_val< 500 ){
+                            $('#5day').text(150);
+                            $('#48hrs').text(200);
+                            $('#24hrs').text(250);
+                            $('#12hrs').text(350);
+                        }else{
+                            $('#5day').text(200);
+                            $('#48hrs').text(250);
+                            $('#24hrs').text(280);
+                            $('#12hrs').text(400);
+                        }
+                    }
+
+                    //delivery values
+                    if($('input[name="Paraphrasing"]').is(":checked")){
+                        
+                        var extra1 = $('input[name="Paraphrasing"]').val();
+                    }
+                    if($('input[name="Formatting"]').is(":checked")){
+                        
+                        var extra2 = $('input[name="Formatting"]').val();
+                    }
+                    if($('input[name="FlagReport"]').is(":checked")){
+                        
+                        var extra3 = $('input[name="FlagReport"]').val();
+                    }
+                    
+                   
+                    alert(extra1+'-'+extra2+'-'+extra3)
+                    var total_amount =  extra1 + extra2 + extra3;
+                    $('.total-val').text(total_amount);
+                    //alert(Service_val +'-'+words_val+'-'+delivery+'-'+extra1+''+extra2+''+extra3); 
+                });
+            });
+        </script>
     </body>
 </html>

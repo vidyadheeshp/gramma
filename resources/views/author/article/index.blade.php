@@ -23,8 +23,58 @@
     </div>
 
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 row">
+            <div class="card col-md-3">
+                <div class="card-header text-white" style="background-color : #00AA9E">
+                    <i class="fa fa-edit"></i>
+                </div>
 
+                <div class="card-body">
+                  <h4 class="header-title">Proof Reading And Editing</h4>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#service1addModal">Proceed</button>
+                    <!-- Include Service 1 Add modal -->
+                    @include('author.'.$url.'.service1')
+                </div>
+            </div>
+            <div class="card  col-md-3">
+                <div class="card-header text-white" style="background-color : #00AA9E">
+                    <i class="far fa-clone"></i>
+                </div>
+
+                <div class="card-body">
+                  <h4 class="header-title">Paraphrasing and ReWritting</h4>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#service2addModal">Proceed</button>
+                    <!-- Include Service 2 Add modal -->
+                    @include('author.'.$url.'.service2')
+                </div>
+            </div>
+            <div class="card col-md-3">
+                <div class="card-header text-white" style="background-color : #00AA9E">
+                    <i class="fas fa-pen"></i>
+                </div>
+
+                <div class="card-body">
+                  <h4 class="header-title">Content Writting Service</h4>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#service3addModal">Proceed</button>
+                    <!-- Include Service 3 Add modal -->
+                    @include('author.'.$url.'.service3')
+                </div>
+            </div>
+            <div class="card col-md-3" >
+                <div class="card-header text-white" style="background-color : #00AA9E">
+                    <i class="fa fa-language" aria-hidden="true"></i>
+                </div>
+
+                <div class="card-body">
+                  <h4 class="header-title">Translation Service</h4>
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#service3addModal">Proceed</button>
+                    <!-- Include Service 3 Add modal -->
+                    @include('author.'.$url.'.service4')
+                </div>
+            </div>
+        </div>    
+        <div class="clearfix"></div>    
+        <div class="col-12">  
             <div class="card">
                 <div class="card-header">
                     <!-- Include Flash Messages -->

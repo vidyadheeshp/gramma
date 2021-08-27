@@ -1,12 +1,12 @@
     <!-- Add modal content -->
-    <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="service3addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <form class="needs-validation" novalidate action="{{ URL::route('author.'.$url.'.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Add {{ $title }}</h4>
+                    <h4 class="modal-title" id="myModalLabel">>New {{ $title }} for <span class="text-info"> Content Writting Service</span></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
@@ -14,27 +14,7 @@
 
                     <div class="row col-md-12">
 
-                      <div class="card col-md-6">
-                          <div class="card-body">
-                            <h2 class="card-title">Service</h2>
-                            <div class="form-group">
-                              <select class="form-control" name="services" id="services" required>
-                                  <option value="">Select Service</option>
-                                  @foreach( $categories as $category )
-                                  <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                  @endforeach
-                              </select>
-                              <br/>
-                              <input type="text" class="form-control" name="nowords" id="nowords" placeholder="No Of Words" required>
-          
-                                <div class="invalid-feedback">
-                                  Please Provide Document Title.
-                                </div>
-                                <br/>
-                                <button type="button" allign="center" id="checlbtn" class="btn btn-primary">Check</button>
-                            </div>
-                          </div>
-                      </div>
+                      
                       <div class="card col-md-6">
                         <div class="card-body">
                           <h2 class="card-title">Delivery</h2>

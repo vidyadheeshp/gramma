@@ -1,40 +1,40 @@
     <!-- Add modal content -->
-    <div id="addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="service1addModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
               <form class="needs-validation" novalidate action="{{ URL::route('author.'.$url.'.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Add {{ $title }}</h4>
+                    <h4 class="modal-title" id="myModalLabel">New {{ $title }} for <span class="text-info"> Proof Reading And Editing</span></h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 </div>
                 <div class="modal-body">
                     <!-- Form Start -->
 
                     <div class="row col-md-12">
-
-                      <div class="card col-md-6">
-                          <div class="card-body">
-                            <h2 class="card-title">Service</h2>
-                            <div class="form-group">
-                              <select class="form-control" name="services" id="services" required>
-                                  <option value="">Select Service</option>
-                                  @foreach( $categories as $category )
-                                  <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                  @endforeach
-                              </select>
-                              <br/>
-                              <input type="text" class="form-control" name="nowords" id="nowords" placeholder="No Of Words" required>
-          
-                                <div class="invalid-feedback">
-                                  Please Provide Document Title.
+                        <div class="card col-md-6">
+                            <div class="card-body">
+                                <h3 class="card-title">Upload Document</h3>
+                                <div class="form-group">
+                                    <!--label for="file">Upload Document</label-->
+                                    <input type="file" class="form-control" name="file" id="file" placeholder="Upload Document">
+            
+                                    <div class="invalid-feedback">
+                                    Please Provide Artilce Document.
+                                    </div>
                                 </div>
-                                <br/>
-                                <button type="button" allign="center" id="checlbtn" class="btn btn-primary">Check</button>
+                                <h5>Or</h4>
+                                <div class="form-group">
+                                    <!--label for="file">Upload Document</label-->
+                                    <input type="text" class="form-control" name="nowords" id="nowords" placeholder="Word Count">
+            
+                                    <div class="invalid-feedback">
+                                    Please Provide Word Count.
+                                    </div>
+                                </div>
                             </div>
-                          </div>
-                      </div>
+                        </div>
                       <div class="card col-md-6">
                         <div class="card-body">
                           <h2 class="card-title">Delivery</h2>
